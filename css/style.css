@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --border:#666;
+  --primary-card:#e5e5dc;
+  --selected-card:#c66d3d;
+  --success-card:#26495c;
+  --secondary-color: #c4a35a;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  padding: 0;
+  border: 0;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+.input {
+  width: 50%;
+  height: 2rem;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  margin-right: 2rem;
+  padding: 0 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: .4rem;
+}
+
+.btn {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 2rem;
+  font-weight: 400;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background-color .2s ease-in, color .2s ease-in;
+}
+
+.btn:hover {
+  background-color: var(--success-card);
+
+  color: white;
+}
+
+.list {
+  width: fit-content;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+
+  padding: 1.5rem 0;
+  margin: 0 auto;
+}
+
+.square__2x2 {grid-template-columns: 1fr 1fr;}
+.square__4x4 {grid-template-columns: 1fr 1fr 1fr 1fr;}
+.square__6x6 {grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; gap: .5rem;}
+.square__8x8 {grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  gap: .75rem;}
+.square__10x10 {grid-template-columns:  1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  gap: .5rem;}
+
+.square__6x6 .card {
+  width: 100px;
+  min-height: 100px;
+}
+
+.square__8x8 .card {
+  width: 70px;
+  min-height: 70px;
+}
+
+.square__10x10 .card {
+  width: 50px;
+  min-height: 50px;
+}
+
+.card {
+  width: 120px;
+  min-height: 120px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  cursor: pointer;
+
+  border: 2px solid var(--border);
+  border-radius: 20px;
+
+  color: transparent;
+  opacity: .5;
+
+  background-color: var(--primary-card);
+
+  transform: rotateY(178deg);
+
+  transition: color .2s ease-in, background-color .2s ease-in, transform .2s ease-in, opacity .2s ease-in;
+}
+
+.card:hover {
+  opacity: .8;
+}
+
+.card:active {
+  opacity: .6;
+}
+
+.is-open:hover,
+.is-open:active,
+.is-open {
+  opacity: 1;
+}
+
+.is-open {
+  color: white;
+  transform: rotateY(0deg);
+
+  cursor: default;
+}
+
+.is-selected {
+  background-color: var(--selected-card);
+}
+
+.is-success {
+  background-color: var(--success-card);
+}
+
+
+.text {
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.win-massage {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.text::after {
+  content: "";
+  position: absolute;
+  top: -88px;
+  bottom: -88px;
+  left: 0;
+  right: 0;
+
+  transform: translateY(-92px);
+
+  animation: win 5s linear infinite;
+
+  background: center / contain repeat-y url('../confetti.png');
+  transition: transform .2s ease-in;
+}
+
+@keyframes win {
+  from {
+    transform: translateY(-92px);
+  }
+
+  to {
+    transform: translateY(22px);
+  }
+}
